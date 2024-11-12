@@ -716,6 +716,9 @@ class AttnProcessor:
         value = attn.head_to_batch_dim(value)
 
         attention_probs = attn.get_attention_scores(query, key, attention_mask)
+        attention_probs = attn.dropout(attention_probs) # denoise
+        attention_probs = F.leaky_relu(attention_probs) # sparse activation
+
         hidden_states = paddle.matmul(attention_probs, value)
         hidden_states = attn.batch_to_head_dim(hidden_states)
 
