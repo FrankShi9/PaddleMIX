@@ -1,5 +1,5 @@
 简体中文 | [English](README_EN.md)
-
+**(local dev)**
 <p align="center">
   <img src="https://github.com/PaddlePaddle/PaddleMIX/assets/22989727/2cd19298-1c52-4d73-a0f7-dcdab6a8ec90" align="middle" width = "600" />
 </p>
