@@ -5,60 +5,7 @@ from paddlemix.processors.qwen2_vl_processing import (
     Qwen2VLProcessor,
     process_vision_info,
 )
-
 import loralib
-
-
-def get_param_info(param):
-    """
-    打印参数信息。
-    
-    Args:
-        param (object): 待打印信息的参数对象。
-    
-    Returns:
-        None
-    
-    """
-    print("param name: ", param.name)
-    print("param type: ", type(param))
-    print("param dtype: ", param.dtype)
-    print("param shape: ", param.shape)
-    print("param data: ", param.data)
-    print("param stop_gradient: ", param.stop_gradient)
-    print("param is_leaf: ", param.is_leaf)
-    print("param requires_grad: ", param.requires_grad)
-    print("param trainable: ", param.trainable)
-    print("param grad: ", param.grad)
-    print("param grad_fn: ", param.grad_fn)
-    print("param grad_req: ", param.grad_req)
-
-def get_lora_info(lora_layer):
-    print("lora_layer name: ", lora_layer.name)
-    print("lora_layer type: ", type(lora_layer))
-    print("lora_layer dtype: ", lora_layer.dtype)
-    print("lora_layer shape: ", lora_layer.shape)
-    print("lora_layer data: ", lora_layer.data)
-    print("lora_layer stop_gradient: ", lora_layer.stop_gradient)
-    print("lora_layer is_leaf: ", lora_layer.is_leaf)
-    print("lora_layer requires_grad: ", lora_layer.requires_grad)
-    print("lora_layer trainable: ", lora_layer.trainable)
-    print("lora_layer grad: ", lora_layer.grad)
-    print("lora_layer grad_fn: ", lora_layer.grad_fn)
-    print("lora_layer grad_req: ", lora_layer.grad_req)
-
-    print("lora weight: ", model.get_lora_weight())
-    print("lora bias: ", model.get_lora_bias())
-    print("lora weight grad: ", model.get_lora_weight_grad())
-    print("lora bias grad: ", model.get_lora_bias_grad())
-    print("lora weight norm: ", model.get_lora_weight_norm())
-    print("lora bias norm: ", model.get_lora_bias_norm())
-    print("lora weight rms: ", model.get_lora_weight_rms())
-    print("lora bias rms: ", model.get_lora_bias_rms())
-    print("lora weight decay: ", model.get_lora_weight_decay())
-    print("lora bias decay: ", model.get_lora_bias_decay())
-    print("lora weight decay rate: ", model.get_lora_weight_decay_rate())
-    print("lora bias decay rate: ", model.get_lora_bias_decay_rate())
 
 
 if __name__ == "__main__":
@@ -101,7 +48,7 @@ if __name__ == "__main__":
         return_tensors="pd",
     )
 
-    # lora 训练
+    # lora
     model.apply_lora_(loralib.Linear(in_features=model.config["hidden_size"], out_features=model.config["hidden_size"]))
     model.train()
     loss = paddle.nn.MSELoss()
